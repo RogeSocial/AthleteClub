@@ -30,15 +30,15 @@ h1 {
 
 input {
   width: 400px;
-  height: 40px
+  height: 40px;
 }
 
 button {
-  background-color: white;
+  background-color: white !important;
   color: black;
   padding: 10px;
   border: none;
   height: 40px;
-  width: 75px;
+  width: 50px;
   margin-top: 10px;
 }
