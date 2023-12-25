@@ -1,7 +1,7 @@
 import Router from "express";
 export const accountRouter = Router();
 
-import mongoose, { Schema } from ' mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 import crypto from 'crypto';
 const salt = "paraplane".toString('hex');
@@ -18,6 +18,15 @@ const accountSchema = new Schema({
 })
 
 mongoose.model('accounts', accountSchema);
+
+accountRouter.get('/', async (req, res) => {
+    try {
+        const accounts = await mongoose.models.accounts.find();
+        res.json(accounts);
+    } catch (error) {
+        res.status(500).json({ "error": "internal server error" });
+    }
+})
 
 accountRouter.post('/', async (req, res) => {
     try {
