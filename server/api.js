@@ -24,3 +24,6 @@ api.listen(3000, () => {
         console.log("Error connecting to database: ", err)
       })
 })
+
+import { accountRouter } from './routes/accountRoute.js';
+api.use('/account', accountRouter);
