@@ -28,6 +28,18 @@ accountRouter.get('/', async (req, res) => {
     }
 })
 
+//Give admin rights to an account
+accountRouter.put('/:id', async (req, res) => {
+    try {
+        const account = await mongoose.models.accounts.findById(req.params.id);
+        account.admin = true;
+        await account.save();
+        res.json({"result": "updated"});
+    } catch (error) {
+        res.status(500).json({ "error": "internal server error" });
+    }
+})
+
 accountRouter.post('/', async (req, res) => {
     try {
         const account = new mongoose.models.accounts();
